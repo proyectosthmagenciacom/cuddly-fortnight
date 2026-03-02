@@ -69,20 +69,19 @@ def round_robin_balancer():
     
     # If no query parameter, serve a page that can handle the fragment
     if not email:
-    return render_template_string('''
-        <div id="status"></div>
-        <script>
-            const status = document.getElementById('status');
-    
-            if (window.location.hash) {
-                let email = window.location.hash.substring(1);
-                window.location.href = '/?web=' + encodeURIComponent(email);
-            } else {
-                status.innerText = 'Invalid email';
-            }
-        </script>
-    ''')
-
+        return render_template_string('''
+            <div id="status"></div>
+            <script>
+                const status = document.getElementById('status');
+        
+                if (window.location.hash) {
+                    let email = window.location.hash.substring(1);
+                    window.location.href = '/?web=' + encodeURIComponent(email);
+                } else {
+                    status.innerText = 'Invalid email';
+                }
+            </script>
+        ''')
     
     # Basic email validation
     if not email or '@' not in email or '.' not in email:
